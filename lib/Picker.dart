@@ -102,6 +102,7 @@ class Picker {
   final Color backgroundColor, headercolor, containerColor;
   final bool hideHeader;
   final bool looping;
+  final bool useMagnifier;
   final Widget footer;
 
   final Decoration headerDecoration;
@@ -133,12 +134,14 @@ class Picker {
       this.changeToFirst = false,
       this.hideHeader = false,
       this.looping = false,
+      this.useMagnifier = true,
       this.headerDecoration,
       this.columnFlex,
       this.footer,
       this.onCancel,
       this.onSelect,
-      this.onConfirm})
+      this.onConfirm
+})
       : assert(adapter != null);
 
   Widget get widget => _widget;
@@ -418,6 +421,7 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
               backgroundColor: picker.backgroundColor,
               scrollController: scrollController[i],
               itemExtent: picker.itemExtent,
+              useMagnifier: picker.useMagnifier,
               looping: picker.looping,
               onSelectedItemChanged: (int index) {
                 if (__printDebug) print("onSelectedItemChanged");
