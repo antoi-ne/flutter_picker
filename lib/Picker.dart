@@ -149,11 +149,11 @@ class Picker {
   int _maxLevel = 1;
 
   /// 生成picker控件
-  Widget makePicker([ThemeData themeData, bool isModal = false]) {
+  Widget makePicker([Key key, ThemeData themeData, bool isModal = false]) {
     _maxLevel = adapter.maxLevel;
     adapter.picker = this;
     adapter.initSelects();
-    _widget = _PickerWidget(picker: this, themeData: themeData, isModal: isModal);
+    _widget = _PickerWidget(key, picker: this, themeData: themeData, isModal: isModal);
     return _widget;
   }
 
