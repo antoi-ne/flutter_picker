@@ -103,6 +103,10 @@ class Picker {
   final bool hideHeader;
   final bool looping;
   final bool useMagnifier;
+  final double diameterRatio;
+  final double magnification;
+  final double squeeze;
+  final double offAxisFraction;
   final Widget footer;
 
   final Decoration headerDecoration;
@@ -134,13 +138,17 @@ class Picker {
       this.changeToFirst = false,
       this.hideHeader = false,
       this.looping = false,
-      this.useMagnifier = true,
+      this.useMagnifier = false,
       this.headerDecoration,
       this.columnFlex,
       this.footer,
       this.onCancel,
       this.onSelect,
-      this.onConfirm
+      this.onConfirm,
+      this.diameterRatio = 1.1,
+      this.magnification = 1.0,
+      this.squeeze = 1.45,
+      this.offAxisFraction = 0.0
 })
       : assert(adapter != null);
 
@@ -149,18 +157,18 @@ class Picker {
   int _maxLevel = 1;
 
   /// 生成picker控件
-  Widget makePicker([Key key, ThemeData themeData, bool isModal = false]) {
+  Widget makePicker({Key key, ThemeData themeData, bool isModal = false}) {
     _maxLevel = adapter.maxLevel;
     adapter.picker = this;
     adapter.initSelects();
-    _widget = _PickerWidget(key, picker: this, themeData: themeData, isModal: isModal);
+    _widget = _PickerWidget(key:key, picker: this, themeData: themeData, isModal: isModal);
     return _widget;
   }
 
   /// 显示 picker
   void show(ScaffoldState state, [ThemeData themeData]) {
     state.showBottomSheet((BuildContext context) {
-      return makePicker(themeData);
+      return makePicker(themeData:themeData);
     });
   }
 
@@ -169,7 +177,7 @@ class Picker {
     return await showModalBottomSheet<T>(
         context: context, //state.context,
         builder: (BuildContext context) {
-          return makePicker(themeData, true);
+          return makePicker(themeData:themeData, isModal:true);
         });
   }
 
@@ -423,6 +431,10 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
               itemExtent: picker.itemExtent,
               useMagnifier: picker.useMagnifier,
               looping: picker.looping,
+              diameterRatio: picker.diameterRatio,
+              magnification: picker.magnification,
+              squeeze: picker.squeeze,
+              offAxisFraction: picker.offAxisFraction,
               onSelectedItemChanged: (int index) {
                 if (__printDebug) print("onSelectedItemChanged");
                 setState(() {

@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:flutter_picker/flutter_picker.dart';
 import 'PickerData.dart';
 //import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter/src/material/dialog.dart' as Dialog;
 
 void main() => runApp(new MyApp());
 
@@ -394,7 +393,7 @@ class _MyHomePageState extends State<MyHomePage> {
           child: new Text(PickerLocalizations.of(context).confirmText))
     ];
 
-    Dialog.showDialog(
+    showDialog(
         context: context,
         builder: (BuildContext context) {
           return new AlertDialog(
