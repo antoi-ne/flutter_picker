@@ -1,3 +1,45 @@
+## 2.0.1
+* Fixed bug.
+* Add PickerWidget.of(context) Get Picker
+* Add selectedIconTheme property
+
+## 2.0.0
+* Support Null safety
+* Optimize code, Update demo list
+
+## 1.1.5
+* Repair BUG (Including the problem of datetime adapter before the month, add the needUpdatePrev interface to the adapter)
+* add builderHeader params. Allow custom headers to be generated.
+* DateTimePickerAdapter add minHour, maxHour.
+* Thank you for your timely feedback in GitHub!
+
+## 1.1.4
+* performance optimization
+* Add a demo with a pop-up fillet background at the bottom.
+
+## 1.1.3
+* return for showDialog , add barrierDismissible (thanks: Ali1Ammar)
+
+## 1.1.2
+* Add the ability to jump minutes in DateTimePickerAdapter #76 (thank: MoacirSchmidt)
+* Repair BUG
+
+## 1.1.1
+* Add localization for Turkish language
+* Refactor localization code
+* Repair BUG
+
+## 1.1.0
+
+* Project reconstruction, removing Android, IOS directory. 
+* Add localization for Spanish language
+
+## 1.0.15
+
+* Move the edge of the head to the bottom of the head so that it can be hidden by customization. #55 (thank: @StarOfLife)
+* Repair bug: .showDialog(contex) - error for define style #49 (thank: @nielgomes)
+* Repair bug: Change superior data, lower data display blank #48 (thank: @DemoJameson)
+
 ## 1.0.14
 
 * Added return for showModal #44 (thank: @GiorgioBertolotti)
