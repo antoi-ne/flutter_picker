@@ -134,10 +134,7 @@ class Picker {
       this.selectionOverlay = const CupertinoPickerDefaultSelectionOverlay(),
       this.onCancel,
       this.onSelect,
-      this.onConfirm
-      this.diameterRatio = 1.1,
-      this.magnification = 1.0,
-      this.squeeze = 1.45,
+      this.onConfirm,
       this.offAxisFraction = 0.0
   }) {
     this.selecteds = selecteds == null ? <int>[] : selecteds;
@@ -149,7 +146,7 @@ class Picker {
 
   /// 生成picker控件
   /// Build picker control
-  Widget makePicker([Key key, ThemeData? themeData, bool isModal = false]) {
+  Widget makePicker([Key? key, ThemeData? themeData, bool isModal = false]) {
     _maxLevel = adapter.maxLevel;
     adapter.picker = this;
     adapter.initSelects();
@@ -165,7 +162,7 @@ class Picker {
   /// show picker
   void show(ScaffoldState state, [ThemeData? themeData]) {
     state.showBottomSheet((BuildContext context) {
-      return makePicker(themeData:themeData);
+      return makePicker(null, themeData);
     });
   }
 
@@ -176,7 +173,7 @@ class Picker {
         context: context, //state.context,
         isScrollControlled: isScrollControlled,
         builder: (BuildContext context) {
-          return makePicker(themeData:themeData, isModal:true);
+          return makePicker(null, themeData, true);
         });
   }
 
@@ -541,14 +538,9 @@ class PickerWidgetState<T> extends State<_PickerWidget> {
                         diameterRatio: picker.diameterRatio,
                         squeeze: picker.squeeze,
                         selectionOverlay: picker.selectionOverlay,
+                        useMagnifier: picker.useMagnifier,
+                        offAxisFraction: picker.offAxisFraction,
                         onSelectedItemChanged: (int _index) {
-              useMagnifier: picker.useMagnifier,
-              looping: picker.looping,
-              diameterRatio: picker.diameterRatio,
-              magnification: picker.magnification,
-              squeeze: picker.squeeze,
-              offAxisFraction: picker.offAxisFraction,
-                          onSelectedItemChanged: (int index) {
                           if (__printDebug) print("onSelectedItemChanged");
                           if (_length <= 0) return;
                           var index = _index % _length;

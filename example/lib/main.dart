@@ -154,6 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
       textStyle: TextStyle(color: Colors.blue, fontFamily: _fontFamily),
       selectedTextStyle: TextStyle(color: Colors.red),
       columnPadding: const EdgeInsets.all(8.0),
+      selectionOverlay: Container(),
       onConfirm: (Picker picker, List value) {
         print(value.toString());
         print(picker.getSelectedValues());
@@ -513,7 +514,7 @@ class _MyHomePageState extends State<MyHomePage> {
         borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
         child: Container(
           padding: const EdgeInsets.only(top: 4),
-          child: picker.makePicker(null, true),
+          child: picker.makePicker(null, null, true),
         )
       );
     });
